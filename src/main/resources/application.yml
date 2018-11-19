@@ -4,4 +4,8 @@ zuul:
   routes:
     courses:
       path: /**
-      url: http://localhost:8080
+      service-id: cursosboot
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://@localhost:8761}/eureka/

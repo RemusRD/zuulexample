@@ -1,0 +1,7 @@
+server:
+  port: 8090
+zuul:
+  routes:
+    courses:
+      path: /**
+      url: http://localhost:8080

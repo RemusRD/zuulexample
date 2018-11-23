@@ -1,11 +1,27 @@
 server:
   port: 8090
 zuul:
+  sensitiveHeaders:
   routes:
+    auth-service:
+      strip-prefix: false
+      path: /oauth/**
+      sensitiveHeaders:
+      service-id: oauthsample
     courses:
       path: /**
+      strip-prefix: false
+      sensitiveHeaders:
       service-id: cursosboot
+
 eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URL:http://@localhost:8761}/eureka/
+
+logging.level.org.springframework: DEBUG
+
+security:
+  jwt:
+    key:
+      public: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqWWitxbuvFLWI7EcBHJm9z9OjM+O/OvcNrJazCHf9eRHeTmdpu1CcggdGBXMBOowWOCJlgB6A7fPlz77AeDsLnf1WFzaf58pligJqs34VVrbnum9u5yMynjXnwlvdUXDOobRKab/loxjFLJelLV5IVscu3eKttXDYblUpmA4+oQIDAQAB
